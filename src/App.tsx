@@ -18,10 +18,56 @@ import {
   MessageCircle,
   ArrowRight,
   Heart,
-  Moon
+  Moon,
+  Target,
+  Check,
+  Flame
 } from 'lucide-react';
 
 const CTA_LINK = "https://governmentshiksha.com/product/arabic-learning-course/";
+
+const syllabus = [
+  { ch: "1", title: "Introduction to Arabic Language", items: ["Importance of Arabic language", "Arabic in daily life & career", "Basic pronunciation rules", "Understanding Arabic script (Right to Left)"] },
+  { ch: "2", title: "Arabic Alphabets – Part 1 (ا – ب – ت – ث)", items: ["Recognition of letters", "Sound practice", "Writing forms (initial, middle, final)", "Basic joining of letters", "Simple reading practice"] },
+  { ch: "3", title: "Arabic Alphabets – Part 2 (ج – ح – خ)", items: ["Deep sound pronunciation (ح، خ)", "Letter joining exercises", "Reading short combinations"] },
+  { ch: "4", title: "Arabic Alphabets – Part 3 (د – ذ – ر – ز)", items: ["Non-connecting letters concept", "Sound differentiation (د vs ذ)", "Word formation basics"] },
+  { ch: "5", title: "Arabic Alphabets – Part 4 (س – ش – ص – ض)", items: ["Light vs heavy sounds", "Pronunciation drills", "Reading practice"] },
+  { ch: "6", title: "Arabic Alphabets – Part 5 (ط – ظ – ع – غ)", items: ["Heavy letters (Tafkheem)", "Deep throat sounds (ع، غ)", "Speaking practice"] },
+  { ch: "7", title: "Arabic Alphabets – Part 6 (ف – ق – ك – ل)", items: ["Common letters usage", "Word formation", "Joining practice"] },
+  { ch: "8", title: "Arabic Alphabets – Part 7 (م – ن – هـ – و – ي)", items: ["Final set of letters", "Full alphabet revision", "Reading simple words"] },
+  { ch: "9", title: "Harakat (Vowel Signs)", items: ["Zabar (َ), Zer (ِ), Pesh (ُ)", "Pronunciation drills", "Sound combinations", "Reading with vowels"] },
+  { ch: "10", title: "Word Formation & Reading", items: ["Letter → Syllable → Word", "Joining letters into words", "Basic verbs (كتب، قرأ، درس)", "Reading simple Arabic words"] },
+  { ch: "11", title: "Basic Vocabulary (Daily Use Words)", items: ["Home, school, objects", "Food & drink", "Places & people", "100+ essential words"] },
+  { ch: "12", title: "Basic Speaking Skills (Level 1)", items: ["One-word speaking", "Two-word combinations", "Daily vocabulary speaking"] },
+  { ch: "13", title: "Basic Sentences (Level 2)", items: ["Simple sentence structure", "“This is…” / “I am…”", "Short statements"] },
+  { ch: "14", title: "Self Introduction", items: ["Name, country, identity", "“أنا طالب” type sentences", "Basic conversation"] },
+  { ch: "15", title: "Daily Conversation Practice", items: ["Greetings (السلام عليكم)", "Asking & answering questions", "Polite expressions"] },
+  { ch: "16", title: "Common Topics Speaking", items: ["Food & drink", "Family", "Work & study", "Time & weather"] },
+  { ch: "17", title: "Question–Answer Practice", items: ["What, Where, Why, How", "Yes/No conversation", "Real-life dialogues"] },
+  { ch: "18", title: "Verb Usage (Basic Grammar)", items: ["Present tense verbs", "Daily action verbs", "Simple sentence formation"] },
+  { ch: "19", title: "Past & Future (Basic Level)", items: ["Simple past (ذهبت، كتبت)", "Simple future (سأذهب)", "Practical usage"] },
+  { ch: "20", title: "Real-Life Communication Practice", items: ["Market conversation", "Travel communication", "Phone conversation", "Emergency expressions"] },
+  { ch: "21", title: "Speaking Fluency Training", items: ["Daily self-talk (30 sec practice)", "Audio recording practice", "Confidence building"] },
+  { ch: "22", title: "Practice Lessons (1–50)", items: ["50 structured speaking lessons", "Topic-wise practice", "Arabic + Hindi + Urdu + English", "Real-life conversational training"] },
+  { ch: "23", title: "Practice Sets & Revision", items: ["Short sentence drills", "Daily speaking sets", "Weekly revision plan"] },
+  { ch: "24", title: "Final Speaking Challenge", items: ["Self introduction (1 min)", "Daily routine speaking", "Basic conversation test"] }
+];
+
+const outcomes = [
+  "Read Arabic letters & words",
+  "Speak basic Arabic confidently",
+  "Understand daily conversations",
+  "Form simple sentences",
+  "Build strong foundation for advanced Arabic"
+];
+
+const bonuses = [
+  "Beginner Friendly",
+  "Speaking Focused",
+  "Multilingual Support (Hindi + Urdu + English)",
+  "50+ Practice Lessons",
+  "Daily Use Arabic"
+];
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => (
   <motion.div
@@ -128,38 +174,114 @@ export default function App() {
         </div>
       </section>
 
-      {/* 4. What You Will Learn */}
+      {/* 4. Detailed Syllabus (Replaces old features section) */}
       <section className="py-24 px-4 bg-slate-50">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-center text-slate-900 mb-16">
-              Is Course Mein Aap Kya Seekhenge?
-            </h2>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold font-serif text-slate-900 mb-6">
+                Mukammal Syllabus (Chapter-wise)
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                Ek behtareen aur asaan tarteeb, jo khaas beginners ke liye design ki gayi hai. Speaking, Reading, aur Writing par mukammal focus.
+              </p>
+            </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { icon: BookOpen, title: "Quranic Vocabulary", desc: "Quran ke aam alfaz aur unke mayne asani se samjhein." },
-                { icon: MessageCircle, title: "Basic Conversation", desc: "Rozmarra ki zindagi mein boli jane wali Arabic." },
-                { icon: Star, title: "Grammar Made Easy", desc: "Bina bhari rules ke, asaan tareeqe se grammar." },
-                { icon: PlayCircle, title: "Video Lessons", desc: "High-quality videos jo aap kabhi bhi dekh sakte hain." },
-                { icon: ShieldCheck, title: "Lifetime Access", desc: "Ek baar khareedein, zindagi bhar padhein." },
-                { icon: Heart, title: "Spiritual Connection", desc: "Namaz aur duaon ka matlab samajh kar padhein." }
-              ].map((feature, i) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {syllabus.map((chap, i) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
+                  transition={{ delay: (i % 3) * 0.1 }}
+                  className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-6">
-                    <feature.icon className="w-7 h-7" />
+                  <div className="bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full text-sm inline-block mb-4">
+                    Chapter {chap.ch}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                  <p className="text-slate-600">{feature.desc}</p>
+                  <h3 className="text-lg font-bold text-slate-900 mb-4 leading-snug">{chap.title}</h3>
+                  <ul className="space-y-2">
+                    {chap.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-slate-600">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 4.1 Outcomes & Bonuses */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
+          <FadeIn>
+            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 h-full">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                  <Target className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold font-serif text-slate-900">Course Outcomes</h3>
+              </div>
+              <p className="text-slate-600 mb-6">After completing this course, students will be able to:</p>
+              <ul className="space-y-4">
+                {outcomes.map((outcome, i) => (
+                  <li key={i} className="flex items-center gap-3 text-lg text-slate-800 font-medium">
+                    <Check className="w-6 h-6 text-emerald-500 shrink-0" />
+                    {outcome}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
+          
+          <FadeIn delay={0.2}>
+            <div className="bg-gradient-to-br from-gold-50 to-orange-50 rounded-3xl p-8 border border-gold-200 h-full relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gold-200 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+              <div className="flex items-center gap-3 mb-6 relative z-10">
+                <div className="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center text-gold-600">
+                  <Flame className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold font-serif text-slate-900">Special Bonuses</h3>
+              </div>
+              <p className="text-slate-600 mb-6 relative z-10">Is course ke sath aapko milenge ye behtareen fayde:</p>
+              <ul className="space-y-4 relative z-10">
+                {bonuses.map((bonus, i) => (
+                  <li key={i} className="flex items-center gap-3 text-lg text-slate-800 font-bold">
+                    <Star className="w-6 h-6 text-gold-500 fill-gold-500 shrink-0" />
+                    {bonus}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 4.2 Demo Video */}
+      <section className="py-24 px-4 bg-slate-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(4,120,87,0.15)_0%,transparent_70%)]"></div>
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <FadeIn>
+            <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6">
+              Dekhiye Hum Kaise Padhate Hain
+            </h2>
+            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+              Hamara padhane ka tareeqa itna aasan hai ki koi bhi samajh jaye, Alhamdulillah. Niche di gayi demo video dekhein.
+            </p>
+            
+            <div className="aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(4,120,87,0.3)] border-4 border-slate-800 bg-slate-800">
+              <iframe 
+                src="https://drive.google.com/file/d/1QfUQAhrBhOnw81XGfZe_8LXWqMfHcXGf/preview" 
+                width="100%" 
+                height="100%" 
+                allow="autoplay"
+                className="w-full h-full"
+              ></iframe>
             </div>
           </FadeIn>
         </div>
