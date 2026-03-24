@@ -299,7 +299,7 @@ export default function App() {
             </p>
             <div className="inline-block bg-emerald-50 border-2 border-emerald-200 rounded-3xl p-8 md:p-12 mb-8">
               <div className="text-6xl md:text-8xl font-black text-emerald-700 mb-4 tracking-tighter">
-                ₹999
+                ₹499
               </div>
               <div className="text-emerald-800 font-medium text-lg">One-time payment. Lifetime access.</div>
             </div>
@@ -323,7 +323,7 @@ export default function App() {
                 </h2>
                 
                 <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
-                  Hamara Arabic Course ₹999 ka hai. Lekin rukiye! Agar aap aaj Arabic ke sath <strong className="text-white">Urdu, Sanskrit, ya English</strong> speaking course bhi apni cart mein add karte hain...
+                  Hamara Arabic Course ₹499 ka hai. Lekin rukiye! Agar aap aaj Arabic ke sath <strong className="text-white">Urdu, Sanskrit, ya English</strong> speaking course bhi apni cart mein add karte hain...
                 </p>
                 
                 <div className="py-8 my-8 border-y border-slate-700/50">
@@ -337,7 +337,7 @@ export default function App() {
                     <CheckCircle2 className="w-5 h-5" /> Dhyan dein:
                   </h4>
                   <p className="text-slate-300 text-lg leading-relaxed">
-                    In sabhi (Urdu, Sanskrit, English) courses ki asali keemat individually ₹999 hai. Agar aap alag se lenge toh ₹999 har ek ka lagega. Par Arabic ke sath bundle banane par sirf ₹99 har ek! <strong className="text-emerald-400">Alhamdulillah, ye ek life-changing deal hai.</strong>
+                    In sabhi (Urdu, Sanskrit, English) courses ki asali keemat individually ₹499 hai. Agar aap alag se lenge toh ₹499 har ek ka lagega. Par Arabic ke sath bundle banane par sirf ₹99 har ek! <strong className="text-emerald-400">Alhamdulillah, ye ek life-changing deal hai.</strong>
                   </p>
                 </div>
                 
