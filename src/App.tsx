@@ -83,15 +83,20 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode, delay?: nu
 export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-emerald-200 selection:text-emerald-900">
-      {/* 1. Sticky Header */}
+      {/* 1. Sticky Header with CTA */}
       <header className="sticky top-0 z-50 w-full bg-emerald-700 text-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 py-3 text-center text-sm md:text-base font-medium flex items-center justify-center gap-2">
-          <Moon className="w-4 h-4 text-gold-400" />
-          <span>Assalamo Alaikum! Welcome to Team Government Shiksha.</span>
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+          <div className="text-sm md:text-base font-medium flex items-center gap-2">
+            <Moon className="w-4 h-4 text-gold-400 hidden sm:block" />
+            <span className="line-clamp-1">Assalamo Alaikum! Welcome to Team Government Shiksha.</span>
+          </div>
+          <a href={CTA_LINK} className="shrink-0 flex items-center gap-2 bg-gradient-to-r from-gold-400 to-gold-500 hover:from-gold-500 hover:to-gold-600 text-slate-900 font-bold py-2 px-5 rounded-full text-sm md:text-base transition-colors shadow-lg shadow-gold-500/30 animate-[pulse_2s_ease-in-out_infinite]">
+            <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" /> Buy Now - ₹499
+          </a>
         </div>
       </header>
 
-      {/* 1. Hero Section */}
+      {/* 2. Hero Section */}
       <section className="relative pt-20 pb-32 px-4 overflow-hidden bg-gradient-to-b from-emerald-50 to-white">
         <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/islamic/1920/1080?blur=10')] opacity-5 bg-cover bg-center mix-blend-multiply"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -108,186 +113,36 @@ export default function App() {
               Alhamdulillah, bina kisi technical knowledge ke, apne mobile se ghar baithe Arabic seekhein.
             </p>
             
-            <motion.a
-              href={CTA_LINK}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-gold-500 to-gold-600 text-white text-lg md:text-xl font-bold px-8 py-5 rounded-full shadow-[0_0_40px_rgba(217,119,6,0.4)] hover:shadow-[0_0_60px_rgba(217,119,6,0.6)] transition-all duration-300"
-            >
-              Alhamdulillah, Aaj Hi Shuru Karein
-              <ArrowRight className="w-6 h-6" />
-            </motion.a>
-            <p className="mt-4 text-sm text-slate-500 flex items-center justify-center gap-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.a
+                href={CTA_LINK}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-gold-500 to-gold-600 text-white text-lg md:text-xl font-bold px-8 py-5 rounded-full shadow-[0_0_40px_rgba(217,119,6,0.4)] hover:shadow-[0_0_60px_rgba(217,119,6,0.6)] transition-all duration-300 w-full sm:w-auto"
+              >
+                Alhamdulillah, Aaj Hi Shuru Karein
+                <ArrowRight className="w-6 h-6" />
+              </motion.a>
+              
+              <motion.a
+                href={CTA_LINK}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-3 bg-white text-emerald-700 border-2 border-emerald-600 text-lg md:text-xl font-bold px-8 py-4 rounded-full shadow-lg hover:bg-emerald-50 transition-all duration-300 w-full sm:w-auto"
+              >
+                <ShoppingCart className="w-5 h-5" /> Abhi Khareedein
+              </motion.a>
+            </div>
+            <p className="mt-6 text-sm text-slate-500 flex items-center justify-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600" /> 100% Safe & Secure Checkout
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* 2. The Problem & Agitation Section */}
-      <section className="py-24 bg-slate-900 text-white px-4">
-        <div className="max-w-4xl mx-auto">
-          <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-center mb-16">
-              Lekin Problem Kya Hai?<br />
-              <span className="text-emerald-400 text-2xl md:text-4xl">(Kyun Log Seekh Nahi Paate?)</span>
-            </h2>
-            
-            <div className="space-y-6 max-w-2xl mx-auto">
-              {[
-                "Bade institutes ki fees bahut zyada hoti hai.",
-                "Online payment karne mein darr lagta hai.",
-                "Tech knowledge na hone se ghabrahat hoti hai."
-              ].map((problem, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.2 }}
-                  className="flex items-start gap-4 bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50 backdrop-blur-sm"
-                >
-                  <XCircle className="w-8 h-8 text-red-400 shrink-0 mt-1" />
-                  <p className="text-lg md:text-xl text-slate-200">{problem}</p>
-                </motion.div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      {/* ----------- MAIN OFFERS MOVED TO THE TOP ----------- */}
 
-      {/* 3. The Solution & Story Section */}
-      <section className="py-24 px-4 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <FadeIn>
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 mb-8">
-              <Heart className="w-8 h-8" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif text-slate-900 mb-8 leading-tight">
-              Mashallah, Team Government Shiksha Laya Hai Ek Behtareen Hal!
-            </h2>
-            <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-              Hamein pata hai ki aapko kya chahiye. Isiliye humne ek aisa platform banaya hai jo bilkul <strong className="text-emerald-700">'zero technical knowledge'</strong> walo ke liye hai. InshaAllah, aap sirf kuch clicks mein padhai shuru kar denge.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* 4. Detailed Syllabus (Replaces old features section) */}
-      <section className="py-24 px-4 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <FadeIn>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold font-serif text-slate-900 mb-6">
-                Mukammal Syllabus (Chapter-wise)
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Ek behtareen aur asaan tarteeb, jo khaas beginners ke liye design ki gayi hai. Speaking, Reading, aur Writing par mukammal focus.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {syllabus.map((chap, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (i % 3) * 0.1 }}
-                  className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
-                >
-                  <div className="bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full text-sm inline-block mb-4">
-                    Chapter {chap.ch}
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-4 leading-snug">{chap.title}</h3>
-                  <ul className="space-y-2">
-                    {chap.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-slate-600">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* 4.1 Outcomes & Bonuses */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
-          <FadeIn>
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 h-full">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
-                  <Target className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold font-serif text-slate-900">Course Outcomes</h3>
-              </div>
-              <p className="text-slate-600 mb-6">After completing this course, students will be able to:</p>
-              <ul className="space-y-4">
-                {outcomes.map((outcome, i) => (
-                  <li key={i} className="flex items-center gap-3 text-lg text-slate-800 font-medium">
-                    <Check className="w-6 h-6 text-emerald-500 shrink-0" />
-                    {outcome}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
-          
-          <FadeIn delay={0.2}>
-            <div className="bg-gradient-to-br from-gold-50 to-orange-50 rounded-3xl p-8 border border-gold-200 h-full relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gold-200 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
-              <div className="flex items-center gap-3 mb-6 relative z-10">
-                <div className="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center text-gold-600">
-                  <Flame className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold font-serif text-slate-900">Special Bonuses</h3>
-              </div>
-              <p className="text-slate-600 mb-6 relative z-10">Is course ke sath aapko milenge ye behtareen fayde:</p>
-              <ul className="space-y-4 relative z-10">
-                {bonuses.map((bonus, i) => (
-                  <li key={i} className="flex items-center gap-3 text-lg text-slate-800 font-bold">
-                    <Star className="w-6 h-6 text-gold-500 fill-gold-500 shrink-0" />
-                    {bonus}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* 4.2 Demo Video */}
-      <section className="py-24 px-4 bg-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(4,120,87,0.15)_0%,transparent_70%)]"></div>
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6">
-              Dekhiye Hum Kaise Padhate Hain
-            </h2>
-            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-              Hamara padhane ka tareeqa itna aasan hai ki koi bhi samajh jaye, Alhamdulillah. Niche di gayi demo video dekhein.
-            </p>
-            
-            <div className="aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(4,120,87,0.3)] border-4 border-slate-800 bg-slate-800">
-              <iframe 
-                src="https://drive.google.com/file/d/1QfUQAhrBhOnw81XGfZe_8LXWqMfHcXGf/preview" 
-                width="100%" 
-                height="100%" 
-                allow="autoplay"
-                className="w-full h-full"
-              ></iframe>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* 5. The Shocking Price Reveal */}
+      {/* 3. The Shocking Price Reveal */}
       <section className="py-24 px-4 bg-white text-center">
         <div className="max-w-3xl mx-auto">
           <FadeIn>
@@ -303,11 +158,31 @@ export default function App() {
               </div>
               <div className="text-emerald-800 font-medium text-lg">One-time payment. Lifetime access.</div>
             </div>
+            
+            {/* EXTRA CTA */}
+            <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.a
+                href={CTA_LINK}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 bg-emerald-700 text-white text-xl font-bold px-8 py-4 rounded-full shadow-lg shadow-emerald-700/30 transition-all duration-300 w-full sm:w-auto"
+              >
+                Enroll Now For ₹499 <ArrowRight className="w-5 h-5" />
+              </motion.a>
+              <motion.a
+                href={CTA_LINK}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 bg-gold-500 text-white text-xl font-bold px-8 py-4 rounded-full shadow-lg shadow-gold-500/30 transition-all duration-300 w-full sm:w-auto"
+              >
+                Sirf ₹499 Mein Abhi Khareedein
+              </motion.a>
+            </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* 6. THE IRRESISTIBLE MEGA BUMP OFFER */}
+      {/* 4. THE IRRESISTIBLE MEGA BUMP OFFER */}
       <section className="py-24 px-4 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(4,120,87,0.2)_0%,transparent_70%)]"></div>
         <div className="max-w-5xl mx-auto relative z-10">
@@ -357,8 +232,212 @@ export default function App() {
           </FadeIn>
         </div>
       </section>
+      
+      {/* ------------------------------------------------------------- */}
 
-      {/* 7. Step-by-Step Buying Guide */}
+
+      {/* 5. The Problem & Agitation Section */}
+      <section className="py-24 bg-slate-50 text-slate-900 px-4">
+        <div className="max-w-4xl mx-auto">
+          <FadeIn>
+            <h2 className="text-3xl md:text-5xl font-bold font-serif text-center mb-16">
+              Lekin Problem Kya Hai?<br />
+              <span className="text-emerald-600 text-2xl md:text-4xl">(Kyun Log Seekh Nahi Paate?)</span>
+            </h2>
+            
+            <div className="space-y-6 max-w-2xl mx-auto">
+              {[
+                "Bade institutes ki fees bahut zyada hoti hai.",
+                "Online payment karne mein darr lagta hai.",
+                "Tech knowledge na hone se ghabrahat hoti hai."
+              ].map((problem, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2 }}
+                  className="flex items-start gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm"
+                >
+                  <XCircle className="w-8 h-8 text-red-500 shrink-0 mt-1" />
+                  <p className="text-lg md:text-xl text-slate-700">{problem}</p>
+                </motion.div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 6. The Solution & Story Section */}
+      <section className="py-24 px-4 bg-emerald-800 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-600 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <FadeIn>
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 mb-8">
+              <Heart className="w-8 h-8" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold font-serif mb-8 leading-tight">
+              Mashallah, Team Government Shiksha Laya Hai Ek Behtareen Hal!
+            </h2>
+            <p className="text-xl text-slate-200 leading-relaxed max-w-3xl mx-auto mb-10">
+              Hamein pata hai ki aapko kya chahiye. Isiliye humne ek aisa platform banaya hai jo bilkul <strong className="text-gold-400">'zero technical knowledge'</strong> walo ke liye hai. InshaAllah, aap sirf kuch clicks mein padhai shuru kar denge.
+            </p>
+
+            {/* EXTRA CTA */}
+            <motion.a
+                href={CTA_LINK}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-2 bg-white text-emerald-800 text-xl font-bold px-8 py-4 rounded-full shadow-xl transition-all duration-300"
+              >
+                Yes, I Want To Learn Arabic <ArrowRight className="w-5 h-5" />
+            </motion.a>
+
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 7. Detailed Syllabus */}
+      <section className="py-24 px-4 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <FadeIn>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold font-serif text-slate-900 mb-6">
+                Mukammal Syllabus (Chapter-wise)
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                Ek behtareen aur asaan tarteeb, jo khaas beginners ke liye design ki gayi hai. Speaking, Reading, aur Writing par mukammal focus.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {syllabus.map((chap, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 3) * 0.1 }}
+                  className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
+                >
+                  <div className="bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full text-sm inline-block mb-4">
+                    Chapter {chap.ch}
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-4 leading-snug">{chap.title}</h3>
+                  <ul className="space-y-2">
+                    {chap.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-slate-600">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 8. Outcomes & Bonuses */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12">
+            <FadeIn>
+              <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                    <Target className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-2xl font-bold font-serif text-slate-900">Course Outcomes</h3>
+                </div>
+                <p className="text-slate-600 mb-6">After completing this course, students will be able to:</p>
+                <ul className="space-y-4">
+                  {outcomes.map((outcome, i) => (
+                    <li key={i} className="flex items-center gap-3 text-lg text-slate-800 font-medium">
+                      <Check className="w-6 h-6 text-emerald-500 shrink-0" />
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+            
+            <FadeIn delay={0.2}>
+              <div className="bg-gradient-to-br from-gold-50 to-orange-50 rounded-3xl p-8 border border-gold-200 h-full relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gold-200 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+                <div className="flex items-center gap-3 mb-6 relative z-10">
+                  <div className="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center text-gold-600">
+                    <Flame className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-2xl font-bold font-serif text-slate-900">Special Bonuses</h3>
+                </div>
+                <p className="text-slate-600 mb-6 relative z-10">Is course ke sath aapko milenge ye behtareen fayde:</p>
+                <ul className="space-y-4 relative z-10">
+                  {bonuses.map((bonus, i) => (
+                    <li key={i} className="flex items-center gap-3 text-lg text-slate-800 font-bold">
+                      <Star className="w-6 h-6 text-gold-500 fill-gold-500 shrink-0" />
+                      {bonus}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
+          </div>
+
+          <FadeIn>
+            {/* EXTRA CTA */}
+            <div className="text-center">
+              <motion.a
+                  href={CTA_LINK}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white text-xl font-bold px-10 py-5 rounded-full shadow-xl shadow-emerald-600/30 transition-all duration-300"
+                >
+                  <ShoppingCart className="w-6 h-6" /> Get Instant Access Now
+              </motion.a>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 9. Demo Video */}
+      <section className="py-24 px-4 bg-slate-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(4,120,87,0.15)_0%,transparent_70%)]"></div>
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <FadeIn>
+            <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6">
+              Dekhiye Hum Kaise Padhate Hain
+            </h2>
+            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+              Hamara padhane ka tareeqa itna aasan hai ki koi bhi samajh jaye, Alhamdulillah. Niche di gayi demo video dekhein.
+            </p>
+            
+            <div className="aspect-video w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(4,120,87,0.3)] border-4 border-slate-800 bg-slate-800 mb-12">
+              <iframe 
+                src="https://drive.google.com/file/d/1QfUQAhrBhOnw81XGfZe_8LXWqMfHcXGf/preview" 
+                width="100%" 
+                height="100%" 
+                allow="autoplay"
+                className="w-full h-full"
+              ></iframe>
+            </div>
+
+             {/* EXTRA CTA BELOW VIDEO */}
+             <motion.a
+                href={CTA_LINK}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-gold-500 to-gold-600 text-white text-xl md:text-2xl font-bold px-12 py-5 rounded-full shadow-[0_0_40px_rgba(217,119,6,0.5)] hover:shadow-[0_0_60px_rgba(217,119,6,0.7)] transition-all duration-300"
+              >
+                Start Learning Today
+                <ArrowRight className="w-6 h-6" />
+            </motion.a>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 10. Step-by-Step Buying Guide */}
       <section className="py-24 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <FadeIn>
@@ -388,7 +467,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 8. Post-Purchase Magic */}
+      {/* 11. Post-Purchase Magic */}
       <section className="py-24 px-4 bg-emerald-50">
         <div className="max-w-4xl mx-auto text-center">
           <FadeIn>
@@ -407,7 +486,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 9. Iron-Clad Trust & Support */}
+      {/* 12. Iron-Clad Trust & Support */}
       <section className="py-24 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
           <FadeIn>
@@ -439,7 +518,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 10. Final Call to Action & Footer */}
+      {/* 13. Final Call to Action & Footer */}
       <section className="pt-24 pb-12 px-4 bg-slate-900 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/pattern/1920/1080?blur=10')] opacity-5 bg-cover bg-center mix-blend-overlay"></div>
         <div className="max-w-4xl mx-auto relative z-10">
